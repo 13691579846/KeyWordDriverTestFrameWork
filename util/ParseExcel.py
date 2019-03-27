@@ -1,5 +1,7 @@
 from openpyxl import load_workbook
 from config.VarConfig import *
+from datetime import datetime, date
+
 class ParseExcel(object):
     '''
     解析excel文件的封装
@@ -57,6 +59,26 @@ class ParseExcel(object):
         sh = self.wb[sheetName]
         sh.cell(rowNo, colNo).value = value
         self.wb.save(excelPath)
+    def writeCurrentTime(self, sheetName, rowNo, colNo):
+        '''
+        向某个单元格写入当前时间
+        :return:
+        '''
+        sh = self.wb[sheetName]
+        Time = datetime.now()
+        currentTime = Time.strftime('%Y:%m:%d %H:%M:%S')
+        sh.cell(rowNo, colNo).value = currentTime
+        self.wb.save(excelPath)
+
+    def writeTestResult(self, sheetName, rowNo, result, errorInfo = None, errorPic = None):
+        ParseExcel().writeCurrentTime(sheetName, rowNo, testStep_testRunTime)
+        ParseExcel().writeCell(sheetName, rowNo, testStep_testResult, result)
+        if errorInfo and errorInfo:
+            ParseExcel().writeCell(sheetName, rowNo, testStep_testErrorInfo, errorInfo)
+            ParseExcel().writeCell(sheetName, rowNo, testStep_testErrorPic, errorPic)
+        else:
+            ParseExcel().writeCell(sheetName, rowNo, testStep_testErrorInfo, '')
+            ParseExcel().writeCell(sheetName, rowNo, testStep_testErrorPic, '')
 if __name__=='__main__':
     p = ParseExcel()
     print(p.getRowValue('126account',2))

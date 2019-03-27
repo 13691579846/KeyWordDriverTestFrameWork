@@ -22,18 +22,20 @@ def openBrowser(browser):
         raise e
     else:
         waitUtil = WaitUnit(driver) # driver 创建之后， 创建等待类实例对象
+
+# 浏览器窗口最大化
+def maximize_browser():
+    try:
+        driver.maximize_window()
+    except Exception as e:
+        raise e
 # 加载网址
 def loadUrl(url):
     try:
         driver.get(url)
     except Exception as e:
         raise e
-# 关闭浏览器
-def quitBroswer():
-    try:
-        driver.quit()
-    except Exception as e:
-        raise e
+
 # 强制等待
 def sleep(sleepSeconds):
     try:
@@ -50,11 +52,13 @@ def clear(by, locator):
 # 输入框中输入内容
 def inputValue(by, locator, value):
     try:
-        getElement(driver, by, locator).send_keys(value)
+        element = getElement(driver, by, locator)
+        # element.click()
+        element.send_keys(value)
     except Exception as e:
         raise e
 # 点击操作
-def click(by, locator):
+def clickBtn(by, locator):
     try:
         getElement(driver, by, locator).click()
     except Exception as e:
@@ -126,12 +130,6 @@ def enterKey():
         KeyBoardKeys.oneKey('enter')
     except Exception as e:
         raise e
-# 浏览器窗口最大化
-def maximize_browser():
-    try:
-        driver.maximize_window()
-    except Exception as e:
-        raise e
 
 # 屏幕截图
 def saveScreenShot():
@@ -140,6 +138,8 @@ def saveScreenShot():
         driver.get_screenshot_as_file(pictureName)
     except Exception as e:
         raise e
+    else:
+        return pictureName
 
 def waitPresenceOfElementLocated(by, locator):
     '''
@@ -168,16 +168,22 @@ def waitVisibiltyOfElementLocated(by, locator):
     '''
     waitUtil.visibiltyOfElementLocated(by, locator)
 
-
+# 关闭浏览器
+def quitBroswer():
+    try:
+        driver.quit()
+    except Exception as e:
+        raise e
 if __name__=='__main__':
     openBrowser('firefox')
     loadUrl('http://www.baidu.com')
-    inputValue('id', 'kw','python')
-    clear('id', 'kw')
-    inputValue('id', 'kw', 'python')
-    click('id', 'su')
-    sleep(3)
-    title = getTitle()
-    print(title)
-    assertTitle('python')
-    assert_string_in_page_source('python')
+    # inputValue('id', 'kw','python')
+    # clear('id', 'kw')
+    # inputValue('id', 'kw', 'python')
+    # clickBtn('id', 'su')
+    # sleep(3)
+    # title = getTitle()
+    # print(title)
+    # assertTitle('python')
+    # assert_string_in_page_source('python')
+    ctrlV('python')

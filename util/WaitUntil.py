@@ -12,7 +12,7 @@ class WaitUnit(object):
             'link_text': By.LINK_TEXT
         }
         self.driver = driver
-        self.wait = WebDriverWait(self.driver, 30)
+        self.wait = WebDriverWait(self.driver, 50)
 
     def presenceOfElementLocated(self, by, locator):
         '''

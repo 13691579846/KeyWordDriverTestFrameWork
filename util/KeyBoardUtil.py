@@ -31,7 +31,7 @@ class KeyBoardKeys(object):
         :return:
         '''
         try:
-            win32api.keybd_event(KeyBoardKeys.vk_code[keyName],0,win32con.KEYEVENTF_EXTENDEDKEY,0)
+            win32api.keybd_event(KeyBoardKeys.vk_code[keyName],0,win32con.KEYEVENTF_KEYUP,0)
         except Exception as e:
             raise e
     @staticmethod
