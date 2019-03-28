@@ -6,7 +6,7 @@ projectPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 截图目录
 exceptionPath = projectPath +r'\exceptionpictures'
 
-# 驱动存放路径
+# 驱动存放路径， 需要自己根据自己电脑的驱动为止修改
 iePath = ''
 chromePath = ''
 fireFox = ''
