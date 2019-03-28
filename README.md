@@ -14,5 +14,8 @@
     
     
     运行框架：
-        1.需要修改Excel文件中对应的用户名和密码
-        2.直接运行RunTest.py文件即可执行整个框架
+        1.运行环境需要安装了python3.x+selenium2.x；第三方模块openpyxl,pypiwin32,
+          win32api, win32con
+        2.本地已配置chrome/firefox/ie浏览器及对应版本驱动
+        3.需要修改Excel文件中对应的用户名和密码
+        4.直接运行RunTest.py文件即可执行整个框架
