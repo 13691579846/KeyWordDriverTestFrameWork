@@ -13,7 +13,8 @@ fireFox = ''
 
 # excel文件存放路径
 excelPath = projectPath + r'\testData\126mailSend.xlsx'
-
+# loh文件存放路径
+logPath = projectPath + '\\log\\'
 # 测试用例部分列对应的列号
 testCase_testCaseName = 2
 testCase_testStepName = 4
