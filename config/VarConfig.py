@@ -1,10 +1,19 @@
+"""
+------------------------------------
+@Time : 2019/8/3 14:20
+@Auth : linux超
+@File : VarConfig.py
+@IDE  : PyCharm
+@Motto: Real warriors,dare to face the bleak warning,dare to face the incisive error!
+------------------------------------
+"""
 # 存储全局的变量
 import os
 
 # 项目根目录
 projectPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 截图目录
-exceptionPath = projectPath +r'\exceptionpictures'
+exceptionPath = projectPath + r'\exceptionpictures'
 
 # 驱动存放路径， 需要自己根据自己电脑的驱动为止修改
 iePath = ''
@@ -35,7 +44,6 @@ testStep_testErrorInfo = 9
 testStep_testErrorPic = 10
 
 
-if __name__=='__main__':
-
+if __name__ == '__main__':
     print(projectPath)
     print(exceptionPath)

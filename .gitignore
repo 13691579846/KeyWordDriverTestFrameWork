@@ -1,0 +1,4 @@
+##ignore these files##
+.idea
+.log
+venv/

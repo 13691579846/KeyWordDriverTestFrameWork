@@ -1,46 +1,43 @@
+"""
+------------------------------------
+@Time : 2019/8/3 14:20
+@Auth : linux超
+@File : ObjectMap.py
+@IDE  : PyCharm
+@Motto: Real warriors,dare to face the bleak warning,dare to face the incisive error!
+------------------------------------
+"""
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium import webdriver
+import time
 
 
-def getElement(driver, by, locator):
-    '''
-    查找单一元素
-    :param driver:
-    :param by:
-    :param locator:
-    :return: 元素对象
-    '''
+def get_element(driver, by, locator):
+    """查找单一元素"""
     try:
-        element = WebDriverWait(driver, 30).until(lambda x : x.find_element(by, locator))
+        element = WebDriverWait(driver, 30).until(lambda x: x.find_element(by, locator))
     except Exception as e:
         raise e
     else:
         return element
 
-def getElements(driver, by, locator):
-    '''
-    获取一组元素
-    :param driver:
-    :param by:
-    :param locator:
-    :return: 一组元素对象
-    '''
+
+def get_elements(driver, by, locator):
+    """获取一组元素"""
     try:
-        elements = WebDriverWait(driver, 30).until(lambda x : x.find_element(by, locator))
+        elements = WebDriverWait(driver, 30).until(lambda x: x.find_element(by, locator))
     except Exception as e:
         raise e
     else:
         return elements
 
 
-if __name__=="__main__":
-    from selenium import webdriver
-    import time
-
-    driver = webdriver.Firefox()
-    driver.get('https://mail.126.com')
+if __name__ == "__main__":
+    d = webdriver.Firefox()
+    d.get('https://mail.126.com')
     time.sleep(5)
-    driver.switch_to.frame(getElement(driver, 'xpath', "//div[@id='loginDiv']/iframe"))
-    username = getElement(driver, 'xpath', "//input[@name='email']")
+    d.switch_to.frame(get_element(d, 'xpath', "//div[@id='loginDiv']/iframe"))
+    username = get_element(d, 'xpath', "//input[@name='email']")
     username.send_keys('linuxxiaochao')
-    driver.switch_to.default_content()
-    driver.quit()
+    d.switch_to.default_content()
+    d.quit()
