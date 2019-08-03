@@ -1,4 +1,4 @@
 ##ignore these files##
 .idea
-.log
+*.log
 venv/
